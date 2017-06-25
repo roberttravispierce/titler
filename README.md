@@ -1,17 +1,20 @@
-# Titler
+# ![titler-icon](https://user-images.githubusercontent.com/1078402/27513069-a1b89f32-591e-11e7-8e82-07f991b07b31.png) Titler
 
-Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.
+  _NOTE: Titler is not ready for use yet; in case you stumbled across this somehow. I expect to have it working as a useable gem by the end of July (2017). &mdash;RTP_
+
+[![Build Status](https://travis-ci.org/roberttravispierce/titler.svg?branch=master)](https://travis-ci.org/roberttravispierce/titler)
+[![Code Climate](https://codeclimate.com/github/roberttravispierce/titler/badges/gpa.svg)](https://codeclimate.com/github/roberttravispierce/titler)
 
 1. [What is it?](#what-is-it?)
 2. [How do I get up and running quickly?](#quick-start)
 3. [How do I use it?](#usage)
-4. [Who is responsible?](#who-is-responsible)
-5. [So what's the big deal about titles anyway?](#so-whats-the-big-deal-about-titles-anyway?)
+4. [So why the fuss about titles anyway?](#so-why-the-fuss-about-titles-anyway?)
+5. [Who built this?](#who-built-thi?)
 6. [How can I help improve it?](#how-can-i-help-improve-it?)
 
 ## What is it?
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.
 
 ## How do I get up and running quickly?
 
@@ -92,7 +95,17 @@ There is a [titler_demo](https://github.com/roberttravispierce/titler_demo) demo
 - In a Staging Environment: https://titler-demo-staging.herokuapp.com/
 - In a Production Environment: https://titler-demo-production.herokuapp.com/
 
-## How can I contribute?
+## So why the fuss about titles anyway?
+
+Here are some resources to learn more about the importance of well-crafted and consistent page titles:
+
+-
+
+## Who built this?
+
+Titler was conceived and developed by Robert Pierce ([roberttravispierce](https://github.com/roberttravispierce)), to scratch his own itch and further his education in Ruby and Rails. He received invaluable guidance and encouragment along the way from Jonathan Allured ([jonallured](https://github.com/jonallured)). Thank you Jon, for agreeing to be a mentor and give back to the community.
+
+## How can I help improve it?
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/roberttravispierce/titler.
 
@@ -112,13 +125,3 @@ Here's the most direct way to get your work merged into the project.
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
-
-## Who is responsible?
-
-Titler was conceived and developed by Robert Pierce ([roberttravispierce](https://github.com/roberttravispierce)), to scratch his own itch and further his education in Ruby and Rails. He received invaluable guidance and encouragment along the way from Jonathan Allured ([jonallured](https://github.com/jonallured)). Thank you Jon, for agreeing to be a mentor and give back to the community.
-
-## What's the big deal about titles?
-
-Here are some resources to learn more about the importance of well-crafted and consistent page titles:
-
--

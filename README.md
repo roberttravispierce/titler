@@ -1,9 +1,9 @@
 # ![titler-icon](https://user-images.githubusercontent.com/1078402/27513069-a1b89f32-591e-11e7-8e82-07f991b07b31.png) Titler
 
-  _NOTE: Titler is not ready for use yet; in case you stumbled across this somehow. I expect to have it working as a useable gem by the end of July (2017). &mdash;RTP_
-
 [![Build Status](https://travis-ci.org/roberttravispierce/titler.svg?branch=master)](https://travis-ci.org/roberttravispierce/titler)
 [![Code Climate](https://codeclimate.com/github/roberttravispierce/titler/badges/gpa.svg)](https://codeclimate.com/github/roberttravispierce/titler)
+
+![Titler is not quite ready for use yet; in case you stumbled across this somehow. Soon! —RTP](http://messages.hellobits.com/warning.svg?message=Titler%20is%20not%20quite%20ready%20for%20use%20yet%3B%20in%20case%20you%20stumbled%20across%20this%20somehow.%20Soon!%20%E2%80%94RTP)
 
 1. [What is it?](#what-is-it?)
 2. [How do I get up and running quickly?](#quick-start)

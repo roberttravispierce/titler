@@ -18,13 +18,18 @@ Titler is a ruby gem that automaticaly gives you useful and consistent page titl
 
 ## How do I get up and running quickly?
 
-1. Install the titler gem:
+1. Install the titler gem in your app:
 ```ruby
 gem 'titler' # Add this to your Gemfile
 $ bundle install # Run in your terminal
 ```
 
-2. Add the titler before_action to your application controller:
+2. Run the generator:
+```ruby
+$ rails generate titler:install
+```
+
+3. Add the set_titler before_action to your application controller:
 ```ruby
 # app/controller/application_controller.rb
 class ApplicationController < ActionController::Base
@@ -32,36 +37,42 @@ class ApplicationController < ActionController::Base
     ...
 ```
 
-3. Change your application layout title tag to:
+4. Change your application layout title tag to:
 ```ruby
 # app/views/layouts/application.html.erb
 <title><%= titler.set(content_for(:titler)) %></title>
 ```
 
-4. Set specific page titles you may need in your controller or view:
+5. Set specific page titles you may need in your controller or view:
 ```ruby
 # set title in controller method
-titler.set("This is the Title for this Page")
+titler.set("Legal and Privacy Notices")
 # set title in view (haml)
-= content_for :page_title, "Post - #{@course.title}"
+= content_for :titler, "Post - #{@course.title}"
 ```
 
 This will get you basic, consistent page titles. You can further customize universal and specific page title behavior. See the [How do I use it?](#usage) section.
 
 ## How do I use it?
 
+![titler-string-elements](https://user-images.githubusercontent.com/1078402/27513269-9194340c-5925-11e7-8e7c-726a2d45e041.png)
+
 With Titler, a page title consists of the following elements:
 
-### Environment Prefix (env_prefix)
-- A one letter prefix in parentheses showing the rails environment. Example "(D) Title here..."  for Development environment, or "(S) Title here..." for Staging environment. This aids in quickly scanning and locating browser tabs during development and testing. It is not added for production environments.
+### Environment Prefix
+(env_prefix)
+- A one letter prefix in parentheses showing the rails environment. Example "(D) Title here..."  for Development environment, or "(S) Title here..." for Staging environment. This aids in quickly scanning and locating browser tabs during development and testing. It is omitted for production environments.
 
-### Admin Namespace (admin_namespace)
+### Admin Namespace
+(admin_namespace)
 - The title will be prefixed with "Admin" (admin_namespace i18n value) if the page controller is within an Admin namespace.
 
-### Element Delimiter (delimiter)
+### Element Delimiter
+(delimiter)
 - Elements within the built title string will be delimited by this string. Developer can set it in the i18n file. The default is " - "
 
-### Title Body (title_body)
+### Title Body
+(title_body)
 
 This is the core of the individual page title, which is set by the developer throughout their app. In order of preference:
 
@@ -69,13 +80,15 @@ This is the core of the individual page title, which is set by the developer thr
 - @page_title instance variable if found
 - The Controller and Action (method) name is used if none of the above are found
 
-### App Name (app_name)
-
-- The built title string is appended with the name of the application. This is set in the "app_name" i18n value. Default fallback is the Rails.application.class name.
-
-### App Tagline (app_tagline)
+### App Tagline
+(app_tagline)
 
 This allows for an additional marketing tagline to be in every title. Set in the "app_tagline" i18n value and ignored if not found.
+
+### App Name
+(app_name)
+
+- The built title string is appended with the name of the application. This is set in the "app_name" i18n value. Default fallback is the Rails.application.class name.
 
 ### _Examples_
 

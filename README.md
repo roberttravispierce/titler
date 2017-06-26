@@ -2,46 +2,51 @@
 
 [![Build Status](https://travis-ci.org/roberttravispierce/titler.svg?branch=master)](https://travis-ci.org/roberttravispierce/titler)
 [![Code Climate](https://codeclimate.com/github/roberttravispierce/titler/badges/gpa.svg)](https://codeclimate.com/github/roberttravispierce/titler)
+[![Coverage Status](https://coveralls.io/repos/github/roberttravispierce/titler/badge.svg?branch=master)](https://coveralls.io/github/roberttravispierce/titler?branch=master)
 
 ![Titler is not quite ready for use yet; in case you stumbled across this somehow. Soon! —RTP](http://messages.hellobits.com/warning.svg?message=Titler%20is%20not%20quite%20ready%20for%20use%20yet%3B%20in%20case%20you%20stumbled%20across%20this%20somehow.%20Soon!%20%E2%80%94RTP)
 
 1. [What is it?](#what-is-it?)
-2. [How do I get up and running quickly?](#quick-start)
-3. [How do I use it?](#usage)
+2. [How do I get up and running?](#how-do-i-get-up-and-running?)
+3. [How do I use it?](#how-do-i-use-it?)
 4. [So why the fuss about titles anyway?](#so-why-the-fuss-about-titles-anyway?)
-5. [Who built this?](#who-built-thi?)
+5. [Who built this?](#who-built-this?)
 6. [How can I help improve it?](#how-can-i-help-improve-it?)
 
 ## What is it?
 
 Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.
 
-## How do I get up and running quickly?
+## How do I get up and running?
 
-1. Install the titler gem in your app:
+1. Install the titler gem to your Gemfile and install it:
 ```ruby
-gem 'titler' # Add this to your Gemfile
-$ bundle install # Run in your terminal
+gem 'titler'
+```
+```console
+$ bundle install
 ```
 
-2. Run the generator:
-```ruby
+2. Run the generator. This will create an initializer with config values and an i18n file:
+```console
 $ rails generate titler:install
 ```
 
 3. Add the set_titler before_action to your application controller:
-```ruby
-# app/controller/application_controller.rb
-class ApplicationController < ActionController::Base
-    before_action :set_titler
-    ...
-```
+
+  *app/controller/application_controller.rb*
+  ```ruby
+  class ApplicationController < ActionController::Base
+      before_action :set_titler
+      ...
+  ```
 
 4. Change your application layout title tag to:
-```ruby
-# app/views/layouts/application.html.erb
-<title><%= titler.set(content_for(:titler)) %></title>
-```
+
+  *app/views/layouts/application.html.erb*
+  ```html
+  <title><%= titler.set(content_for(:titler)) %></title>
+  ```
 
 5. Set specific page titles you may need in your controller or view:
 ```ruby
@@ -61,7 +66,7 @@ With Titler, a page title consists of the following elements:
 
 ### Environment Prefix
 (env_prefix)
-- A one letter prefix in parentheses showing the rails environment. Example "(D) Title here..."  for Development environment, or "(S) Title here..." for Staging environment. This aids in quickly scanning and locating browser tabs during development and testing. It is omitted for production environments.
+- A one letter prefix in parentheses showing the rails environment. Example "(D) Title here..."  for Development environment, or "(S) Title here..." for Staging environment. **This aids in quickly scanning and locating browser tabs during development and testing**. It is omitted for production environments.
 
 ### Admin Namespace
 (admin_namespace)

@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/roberttravispierce/titler/badges/gpa.svg)](https://codeclimate.com/github/roberttravispierce/titler)
 [![Coverage Status](https://coveralls.io/repos/github/roberttravispierce/titler/badge.svg?branch=master)](https://coveralls.io/github/roberttravispierce/titler?branch=master)
 
-![Titler is not quite ready for use yet; in case you stumbled across this somehow. Soon! —RTP](http://messages.hellobits.com/warning.svg?message=Titler%20is%20not%20quite%20ready%20for%20use%20yet%3B%20in%20case%20you%20stumbled%20across%20this%20somehow.%20Soon!%20%E2%80%94RTP)
+![Titler is not quite ready for use yet; in case you stumbled across this somehow. Coming soon! —RTP](http://messages.hellobits.com/warning.svg?message=Titler%20is%20not%20quite%20ready%20for%20use%20yet%3B%20in%20case%20you%20stumbled%20across%20this%20somehow.%20Coming%20Soon!%20%E2%80%94RTP)
 
 1. [What is it?](#what-is-it?)
 2. [How do I get up and running?](#how-do-i-get-up-and-running?)
@@ -17,6 +17,10 @@
 
 Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.
 
+![titler-string-elements](https://user-images.githubusercontent.com/1078402/27513269-9194340c-5925-11e7-8e7c-726a2d45e041.png)
+
+There are lots of options and configurations available, all with sensible fallbacks and defaults, including reading from your i18n files. See the [How do I use it?](#how-do-i-use-it?) section for more information.
+
 ## How do I get up and running?
 
 1. Install the titler gem to your Gemfile and install it:
@@ -27,33 +31,42 @@ gem 'titler'
 $ bundle install
 ```
 
-2. Run the generator. This will create an initializer with config values and an i18n file:
+2. {Not Yet Implemented} Run the generator. This will create an initializer with config values and an i18n file:
 ```console
 $ rails generate titler:install
 ```
 
-3. Add the set_titler before_action to your application controller:
+3. Add the page_title and set_page_title helper methods to your application helper:
 
-  *app/controller/application_controller.rb*
+  *app/helpers/application_helper.rb*
   ```ruby
-  class ApplicationController < ActionController::Base
-      before_action :set_titler
-      ...
+  module ApplicationHelper
+
+  def page_title(page_title)
+    content_for(:page_title) {page_title}
+  end
+
+  def set_page_title
+    Titler::Title.new(controller: self, i18n: I18n, title_as_set: content_for(:page_title) || @page_title).title
+  end
+  ...
   ```
 
 4. Change your application layout title tag to:
 
   *app/views/layouts/application.html.erb*
   ```html
-  <title><%= titler.set(content_for(:titler)) %></title>
+  <title><%= set_page_title %></title>
   ```
 
-5. Set specific page titles you may need in your controller or view:
+5. Set specific page titles as desired in your controllers or views:
 ```ruby
-# set title in controller method
-titler.set("Legal and Privacy Notices")
-# set title in view (haml)
-= content_for :titler, "Post - #{@course.title}"
+# Example of setting the title in a controller method:
+helpers.page_title "Legal and Privacy Notices"
+```
+```ruby
+# Example of setting the title in a view (haml version):
+= page_title "Legal and Privacy Notices"
 ```
 
 This will get you basic, consistent page titles. You can further customize universal and specific page title behavior. See the [How do I use it?](#usage) section.

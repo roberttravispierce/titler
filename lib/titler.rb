@@ -5,7 +5,6 @@ class AdminController; end
 
 module Titler
   class Title
-    #From: https://robots.thoughtbot.com/mygem-configure-block
     def self.configure
       self.configuration ||= Configuration.new
       yield(configuration)

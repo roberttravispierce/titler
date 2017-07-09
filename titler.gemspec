@@ -45,4 +45,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-remote"
   spec.add_development_dependency "pry-nav"
+  spec.add_development_dependency 'rb-readline'
+
+  spec.add_dependency 'rails', '>= 3.1'
+  spec.add_dependency 'i18n'
 end

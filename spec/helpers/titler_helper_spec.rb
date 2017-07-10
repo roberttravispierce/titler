@@ -53,7 +53,16 @@ describe Titler::TitlerHelper do
       expect(titler_helper.titler).to eq(expected_title)
     end
 
-    it '(3) adds tagline to defaults' do
+    it '(3) uses default app name if i18n.t is blank' do
+      controller = MockController.new
+      stub_rails(controller, 'production', nil)
+      load_translations({ app_name: '' })
+
+      expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} - #{app_name}"
+      expect(titler_helper.titler).to eq(expected_title)
+    end
+
+    it '(4) adds tagline to defaults' do
       controller = MockController.new
       stub_rails(controller, 'production', nil)
       load_translations({ app_tagline: 'All the News' })

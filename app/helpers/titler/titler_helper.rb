@@ -60,7 +60,11 @@ module Titler
       end
 
       def app_name
-        name = @i18n.exists?('titler.app_name') ? @i18n.t('titler.app_name') : Rails.application.class.to_s.split("::").first
+        if @i18n.exists?('titler.app_name') && @i18n.t('titler.app_name').present?
+          @i18n.t('titler.app_name')
+        else
+          Rails.application.class.to_s.split("::").first
+        end
       end
 
       def app_tagline

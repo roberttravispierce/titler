@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Robert Travis Pierce"]
   spec.email         = ["robert@roberttravispierce.com"]
 
-  spec.summary       = %q{A gem that make titling your Rails app pages dead simple but still allows you flexibility and control.}
-  spec.description   = %q{Titler is a ruby gem that make titling your Rails app pages dead simple but still allows you flexibility and control. Set specific page titles in the controller or view with fallbacks for all situations. You can add environment and namespace prefixes (e.g. "Admin | <Title of page>") automatically.}
+  spec.summary       = %q{Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.}
+  spec.description   = %q{Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application. You can set specific page titles in the controller or view with fallbacks and useful defaults for all situations.}
   spec.homepage     = "https://github.com/roberttravispierce/titler"
   spec.license      = "MIT"
   spec.files        = `git ls-files -z`.split("\x0")

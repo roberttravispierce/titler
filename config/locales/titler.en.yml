@@ -1,0 +1,6 @@
+---
+en:
+  titler:
+    app_name: 'My App'
+    app_tagline: 'Greatest App Ever'
+    delimiter: ' - '

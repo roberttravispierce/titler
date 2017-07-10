@@ -1,35 +1,35 @@
-require "spec_helper"
+require 'spec_helper'
 require 'titler'
 
 describe Titler::TitlerHelper do
 
-# Default/No Developer Action Context ----------------------------------------------------
+# Defaults Only Context ----------------------------------------------------
   context 'when no title info is set' do
     it '(1) uses defaults' do
       controller = MockController.new
       stub_rails(controller, 'production', nil)
-      load_translations({ })
+      load_translations({})
 
       expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} - #{app_name}"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
 
     it '(2) prefixes defaults in development' do
       controller = MockController.new
       stub_rails(controller, 'development', nil)
-      load_translations({ })
+      load_translations({})
 
       expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} - #{app_name}"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
 
     it '(3) adds admin namespace to defaults' do
       controller = MockAdminController.new
       stub_rails(controller, 'production', nil)
-      load_translations({ })
+      load_translations({})
 
       expected_title = "#{env_prefix}Admin - #{controller.controller_name.titleize} #{controller.action_name.titleize} - #{app_name}"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
   end
 
@@ -41,7 +41,7 @@ describe Titler::TitlerHelper do
       load_translations({ delimiter: ' | ' })
 
       expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} | #{app_name}"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
 
     it '(2) adds app name to defaults' do
@@ -50,7 +50,7 @@ describe Titler::TitlerHelper do
       load_translations({ app_name: 'Test App' })
 
       expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} - Test App"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
 
     it '(3) adds tagline to defaults' do
@@ -59,8 +59,32 @@ describe Titler::TitlerHelper do
       load_translations({ app_tagline: 'All the News' })
 
       expected_title = "#{env_prefix}#{controller.controller_name.titleize} #{controller.action_name.titleize} - All the News - #{app_name}"
-      expect(helper.titler).to eq(expected_title)
+      expect(titler_helper.titler).to eq(expected_title)
     end
+  end
+
+# Specific Page Title Context ----------------------------------------------------
+  context 'when specific page title exists' do
+    # it '(1) uses content_for when present' do
+    #   controller = MockController.new
+    #   stub_rails(controller, 'production', nil)
+    #   #TODO setting the content_for is not working for some reason
+    #   titler_helper.content_for(:page_title, 'Test Page')
+    #   expected_title = "#{env_prefix}Test Page - #{app_name}"
+    #   expect(titler_helper.titler).to eq(expected_title)
+    # end
+
+    it '(2) uses page_title var when present' do
+      controller = MockController.new
+      stub_rails(controller, 'production', nil)
+      titler_helper.instance_variable_set(:@page_title, 'Var Test Page')
+      expected_title = "#{env_prefix}Var Test Page - #{app_name}"
+      expect(titler_helper.titler).to eq(expected_title)
+    end
+  end
+
+# Configuration Values Context ----------------------------------------------------
+  context 'when titler configuration values exist' do
   end
 
   def stub_rails(controller, env_str, content_for)
@@ -68,9 +92,9 @@ describe Titler::TitlerHelper do
     allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new(env_str))
     allow(Rails).to receive(:controller).and_return(controller)
 
-    allow(helper).to receive_message_chain(:content_for).and_return(content_for)
-    allow(helper).to receive_message_chain(:controller, :view_assigns).and_return({})
-    allow(helper).to receive_message_chain(:controller).and_return(controller)
+    allow(titler_helper).to receive_message_chain(:content_for).and_return(content_for)
+    allow(titler_helper).to receive_message_chain(:controller, :view_assigns).and_return({})
+    allow(titler_helper).to receive_message_chain(:controller).and_return(controller)
   end
 
   def app_name
@@ -86,10 +110,6 @@ describe Titler::TitlerHelper do
   # set up tests for titler. Just for the sake of saving some lines of code.
   def env_prefix
     Rails.env.production? ? '' : "(#{Rails.env[0,1].upcase}) "
-  end
-
-  def helper
-    @helper ||= Class.new { include Titler::TitlerHelper }.new
   end
 
   # TODO: I think there's a way to do away with this stub style and use something like:
@@ -136,4 +156,17 @@ describe Titler::TitlerHelper do
       {}
     end
   end
+
+  def titler_helper
+    @titler_helper ||= Class.new { include Titler::TitlerHelper }.new
+  end
+
+  # def helper
+  #   Helper.new
+  # end
+  #
+  # class Helper
+  #   include Singleton
+  #   include ActionView::Helpers::CaptureHelper
+  # end
 end

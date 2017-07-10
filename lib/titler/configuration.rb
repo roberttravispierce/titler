@@ -15,29 +15,23 @@ module Titler
       @app_name_position = 'append' # append, prepend, none
       @use_env_prefix = true
       @use_app_tagline = true
-      @delimiter = ' - ' #Note: a 'titler.delimiter' i18n value will override this
+      @delimiter = ' - ' #Note: (Eventually) a 'titler.delimiter' i18n value will override this
     end
   end
 
-  # @return [Titler::Configuration] Titler's current configuration
+  class << self
+    attr_accessor :configuration
+  end
+
   def self.configuration
     @configuration ||= Configuration.new
   end
 
-  # Set Titler's configuration
-  # @param config [Titler::Configuration]
-  def self.configuration=(config)
-    @configuration = config
+  def self.reset
+    @configuration = Configuration.new
   end
 
-  # Modify Titler's current configuration
-  # @yieldparam [Titler::Configuration] config current Titler config
-  # ```
-  # Titler.configure do |config|
-  #   config.use_env_prefix = false
-  # end
-  # ```
   def self.configure
-    yield configuration
+    yield(configuration)
   end
 end

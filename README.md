@@ -36,27 +36,11 @@ $ bundle install
 $ rails generate titler:install
 ```
 
-3. Add the page_title and set_page_title helper methods to your application helper:
-
-  *app/helpers/application_helper.rb*
-  ```ruby
-  module ApplicationHelper
-
-  def page_title(page_title)
-    content_for(:page_title) {page_title}
-  end
-
-  def set_page_title
-    Titler::Title.new(controller: self, i18n: I18n, title_as_set: content_for(:page_title) || @page_title).title
-  end
-  ...
-  ```
-
-4. Change your application layout title tag to:
+3. Change your application layout title tag to:
 
   *app/views/layouts/application.html.erb*
   ```html
-  <title><%= set_page_title %></title>
+  <title><%= titler %></title>
   ```
 
 5. Set specific page titles as desired in your controllers or views:

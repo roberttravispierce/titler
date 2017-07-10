@@ -65,6 +65,15 @@ describe Titler::TitlerHelper do
 
 # Specific Page Title Context ----------------------------------------------------
   context 'when specific page title exists' do
+    it '(1) uses page_title var when present' do
+      controller = MockController.new
+      stub_rails(controller, 'production', nil)
+      load_translations({})
+      titler_helper.instance_variable_set(:@page_title, 'Var Test Page')
+      expected_title = "#{env_prefix}Var Test Page - #{app_name}"
+      expect(titler_helper.titler).to eq(expected_title)
+    end
+
     # it '(1) uses content_for when present' do
     #   controller = MockController.new
     #   stub_rails(controller, 'production', nil)
@@ -73,14 +82,6 @@ describe Titler::TitlerHelper do
     #   expected_title = "#{env_prefix}Test Page - #{app_name}"
     #   expect(titler_helper.titler).to eq(expected_title)
     # end
-
-    it '(2) uses page_title var when present' do
-      controller = MockController.new
-      stub_rails(controller, 'production', nil)
-      titler_helper.instance_variable_set(:@page_title, 'Var Test Page')
-      expected_title = "#{env_prefix}Var Test Page - #{app_name}"
-      expect(titler_helper.titler).to eq(expected_title)
-    end
   end
 
 # Configuration Values Context ----------------------------------------------------

@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/roberttravispierce/titler.svg?branch=master)](https://travis-ci.org/roberttravispierce/titler)
 [![Code Climate](https://codeclimate.com/github/roberttravispierce/titler/badges/gpa.svg)](https://codeclimate.com/github/roberttravispierce/titler)
 [![Coverage Status](https://coveralls.io/repos/github/roberttravispierce/titler/badge.svg?branch=master)](https://coveralls.io/github/roberttravispierce/titler?branch=master)
+[![Gem Version](https://badge.fury.io/rb/titler.svg)](https://badge.fury.io/rb/titler)
 
 ![Titler is not quite ready for use yet; in case you stumbled across this somehow. Coming soon! —RTP](http://messages.hellobits.com/warning.svg?message=Titler%20is%20not%20quite%20ready%20for%20use%20yet%3B%20in%20case%20you%20stumbled%20across%20this%20somehow.%20Coming%20Soon!%20%E2%80%94RTP)
 

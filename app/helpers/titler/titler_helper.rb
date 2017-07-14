@@ -20,7 +20,7 @@ module Titler
         @i18n = i18n
         @title_as_set = title_as_set
         @context = context
-        @configuration = Configuration.new
+        @configuration = Titler.configuration
       end
 
       def to_s

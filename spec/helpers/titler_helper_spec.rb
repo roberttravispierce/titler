@@ -95,6 +95,17 @@ describe Titler::TitlerHelper do
 
 # Configuration Values Context ----------------------------------------------------
   context 'when titler configuration values exist' do
+    it 'uses the options in the configuration block instead of defaults' do
+      controller = MockController.new
+      stub_rails(controller, 'production', nil)
+      load_translations({})
+
+      Titler.configure do |config|
+        config.delimiter = ' | '
+      end
+
+      expect(titler_helper.titler).to include('|')
+    end
   end
 
   def stub_rails(controller, env_str, content_for)

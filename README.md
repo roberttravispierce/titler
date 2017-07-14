@@ -99,7 +99,7 @@ There is a [titler_demo](https://github.com/roberttravispierce/titler_demo) demo
 
 ## <a name="customize"></a>How do I customize it?
 
-I'm working on a generator to add a config initializer and i18n locale file. In the meantime you can add a i18n locale file to change defaults (see the [titler_demo](https://github.com/roberttravispierce/titler_demo) demonstration app for an example):
+I'm working on a generator to add a config initializer and i18n locale file. In the meantime you can add the files to change your defaults (see the [titler_demo](https://github.com/roberttravispierce/titler_demo) demonstration app for an example):
 
 *app/config/locales/titler.en.yml*
 ```yaml
@@ -110,8 +110,6 @@ en:
     app_tagline: 'Your tagline'
     delimiter: ' | '
 ```
-
-![Note the local config initializer is not working yet.](http://messages.hellobits.com/error.svg?message=Note%20the%20local%20config%20initializer%20is%20not%20working%20yet.)
 
 *app/config/initializers/titler.rb*
 ```ruby

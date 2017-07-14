@@ -6,7 +6,7 @@ require 'titler/version'
 Gem::Specification.new do |spec|
   spec.name          = "titler"
   spec.version       = Titler::VERSION
-  spec.authors       = ["Robert Travis Pierce"]
+  spec.authors       = ["Robert Travis Pierce", "Jonathan Allured"]
   spec.email         = ["robert@roberttravispierce.com"]
 
   spec.summary       = %q{Titler is a ruby gem that automaticaly gives you useful and consistent page titles for your Rails application.}

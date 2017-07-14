@@ -105,6 +105,8 @@ describe Titler::TitlerHelper do
       end
 
       expect(titler_helper.titler).to include('|')
+
+      Titler.reset
     end
   end
 
@@ -127,8 +129,6 @@ describe Titler::TitlerHelper do
     I18n.backend.store_translations(:en, { titler: titles })
   end
 
-  # TODO: Can this be right? I'm using what is essentially a private method from inside titler to
-  # set up tests for titler. Just for the sake of saving some lines of code.
   def env_prefix
     Rails.env.production? ? '' : "(#{Rails.env[0,1].upcase}) "
   end
@@ -181,13 +181,4 @@ describe Titler::TitlerHelper do
   def titler_helper
     @titler_helper ||= Class.new { include Titler::TitlerHelper }.new
   end
-
-  # def helper
-  #   Helper.new
-  # end
-  #
-  # class Helper
-  #   include Singleton
-  #   include ActionView::Helpers::CaptureHelper
-  # end
 end

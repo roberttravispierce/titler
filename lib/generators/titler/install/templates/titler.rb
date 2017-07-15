@@ -1,5 +1,7 @@
 Titler.configure do |config|
-  # See README.md for details on these configuration options
+  # See titler gem README.md (https://github.com/roberttravispierce/titler)
+  # for details on these configuration options. Uncomment and change to use:
+  #
   # config.use_env_prefix = true
   # config.delimiter = ' - '
   # config.app_name_position = 'append' # append, prepend, none

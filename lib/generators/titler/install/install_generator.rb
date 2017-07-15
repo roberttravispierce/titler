@@ -8,12 +8,12 @@ module Titler
 
       def copy_initializer
         template 'titler.rb', 'config/initializers/titler.rb'
-
-        puts "Install complete!"
+        puts "Initializer install complete."
       end
 
       def copy_i18n
         template 'titler.en.yml', 'config/locales/titler.en.yml'
+        puts "Localization install complete."
       end
     end
   end

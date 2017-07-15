@@ -99,7 +99,12 @@ There is a [titler_demo](https://github.com/roberttravispierce/titler_demo) demo
 
 ## <a name="customize"></a>How do I customize it?
 
-I'm working on a generator to add a config initializer and i18n locale file. In the meantime you can add the files to change your defaults (see the [titler_demo](https://github.com/roberttravispierce/titler_demo) demonstration app for an example):
+
+Customize titler settings for your app by running the generator:
+```console
+rails generate titler:install
+```
+This will generate two files to give you customization options (see the [titler_demo](https://github.com/roberttravispierce/titler_demo) demonstration app for an example):
 
 *app/config/locales/titler.en.yml*
 ```yaml
@@ -114,12 +119,15 @@ en:
 *app/config/initializers/titler.rb*
 ```ruby
 Titler.configure do |config|
-  config.use_env_prefix = true
-  config.delimiter = ' - '
-  config.app_name_position = 'append' # append, prepend, none
-  config.use_app_tagline = true
-  config.admin_name = 'Admin'
-  config.admin_controller = AdminController
+  # See titler gem README.md (https://github.com/roberttravispierce/titler)
+  # for details on these configuration options. Uncomment and change to use:
+  #
+  # config.use_env_prefix = true
+  # config.delimiter = ' - '
+  # config.app_name_position = 'append' # append, prepend, none
+  # config.use_app_tagline = true
+  # config.admin_name = 'Admin'
+  # config.admin_controller = AdminController
 end
 ```
 

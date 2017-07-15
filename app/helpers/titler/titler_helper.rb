@@ -56,7 +56,11 @@ module Titler
       end
 
       def delimiter
-        @i18n.exists?('titler.delimiter') ? @i18n.t('titler.delimiter') : @configuration.delimiter
+        if @i18n.exists?('titler.delimiter') && @i18n.t('titler.delimiter').present?
+          @i18n.t('titler.delimiter')
+        else
+          @configuration.delimiter
+        end
       end
 
       def app_name

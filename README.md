@@ -131,6 +131,31 @@ Titler.configure do |config|
 end
 ```
 
+### Configuration options
+
+- **use_env_prefix** (Default = 'true')
+
+  Toggle use of the env_prefix. Note the prefix will never be use in a production environment no matter what the setting.
+
+- **delimiter** (Default = ' - ')
+
+  Change the character delimiter between elements. Be sure to include any spaces you desire.
+
+- **app_name_position** (Default = 'append')
+
+  Adjust how the app name is used. Options are 'append', 'prepend', or 'none'
+
+- **use_app_tagline** (Default = 'true')
+
+  Toggle use of marketing tagline. Position is right before an appended app_name or right after a prepended app_name.
+
+- **admin_name** (Default = 'Admin')
+
+  Change the text to add to the title if an admin controller is being used
+
+- **admin_controller** (Default = 'AdminController')
+
+  Class name of controller to trigger addition of 'admin_name' in title
 
 ## <a name="why"></a>So why the fuss about titles anyway?
 

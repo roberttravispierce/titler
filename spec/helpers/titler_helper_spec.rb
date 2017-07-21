@@ -92,14 +92,16 @@ describe Titler::TitlerHelper do
       expect(titler_helper.titler).to eq(expected_title)
     end
 
-    # it '(1) uses content_for when present' do
-    #   controller = MockController.new
-    #   stub_rails(controller, 'production', nil)
-    #   #TODO setting the content_for is not working for some reason
-    #   titler_helper.content_for(:page_title, 'Test Page')
-    #   expected_title = "#{env_prefix}Test Page - #{app_name}"
-    #   expect(titler_helper.titler).to eq(expected_title)
-    # end
+    it '(2) uses content_for when present' do
+      controller = MockController.new
+      stub_rails(controller, 'production', nil)
+      load_translations({})
+      # allow(titler_helper).to receive_message_chain(:content_for, :page_title).and_return('Test Page')
+      # titler_helper.content_for(:page_title, 'Test Page')
+      titler_helper.stub(:content_for).with(:page_title).and_return('Test Page')
+      expected_title = "#{env_prefix}Test Page - #{app_name}"
+      expect(titler_helper.titler).to eq(expected_title)
+    end
   end
 
 # Configuration Values Context ----------------------------------------------------

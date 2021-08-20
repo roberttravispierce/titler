@@ -3,7 +3,7 @@ orbs:
   ruby: circleci/ruby@0.1.2
 
 jobs:
-  build:
+  test:
     parameters:
       ruby-version:
         type: string

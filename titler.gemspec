@@ -51,5 +51,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 3.1'
   spec.add_dependency 'i18n'
+  spec.add_dependency 'bundler', ">=2.2.10"
 
 end

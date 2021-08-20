@@ -1,26 +1,25 @@
-require 'spec_helper'
-require 'titler'
+require "spec_helper"
+require "titler"
 
 class ManagerController; end
 
 module Titler
   describe Configuration do
-
-    context 'with configuration block' do
-      it 'uses the options in the configuration block instead of defaults' do
+    context "with configuration block" do
+      it "uses the options in the configuration block instead of defaults" do
         Titler.configure do |config|
           config.admin_controller = ManagerController
-          config.admin_name = 'Manager'
-          config.app_name_position = 'prepend'
-          config.delimiter = ' | '
+          config.admin_name = "Manager"
+          config.app_name_position = "prepend"
+          config.delimiter = " | "
           config.use_app_tagline = false
           config.use_env_prefix = false
         end
 
         expect(Titler.configuration.admin_controller).to eq ManagerController
-        expect(Titler.configuration.admin_name).to eq 'Manager'
-        expect(Titler.configuration.app_name_position).to eq 'prepend'
-        expect(Titler.configuration.delimiter).to eq ' | '
+        expect(Titler.configuration.admin_name).to eq "Manager"
+        expect(Titler.configuration.app_name_position).to eq "prepend"
+        expect(Titler.configuration.delimiter).to eq " | "
         expect(Titler.configuration.use_app_tagline).to eq false
         expect(Titler.configuration.use_env_prefix).to eq false
       end

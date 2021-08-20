@@ -1,10 +1,10 @@
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
 
 require "bundler/setup"
-require 'pry'
+require "pry"
 require "titler"
-require 'rails'
+require "rails"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -1,6 +1,52 @@
 require "spec_helper"
 require "titler"
 
+# TODO: I think there's a way to do away with this stub style and use something like:
+#       allow(helper).to receive(:controller).and_return('MockController') but I'm not sure.
+class MockController
+  def controller_name
+    "mock"
+  end
+
+  def action_name
+    "action"
+  end
+
+  def view_assigns
+    {}
+  end
+end
+
+class AdminController; end
+
+class MockAdminController < AdminController
+  def controller_name
+    "mock_admin"
+  end
+
+  def action_name
+    "action"
+  end
+
+  def view_assigns
+    {}
+  end
+end
+
+class MyAdminController < AdminController
+  def controller_name
+    "my_admin"
+  end
+
+  def action_name
+    "action"
+  end
+
+  def view_assigns
+    {}
+  end
+end
+
 describe Titler::TitlerHelper do
   # Defaults Only Context ----------------------------------------------------
   context "when no title info is set" do
@@ -139,52 +185,6 @@ describe Titler::TitlerHelper do
 
   def env_prefix
     Rails.env.production? ? "" : "(#{Rails.env[0, 1].upcase}) "
-  end
-
-  # TODO: I think there's a way to do away with this stub style and use something like:
-  #       allow(helper).to receive(:controller).and_return('MockController') but I'm not sure.
-  class MockController
-    def controller_name
-      "mock"
-    end
-
-    def action_name
-      "action"
-    end
-
-    def view_assigns
-      {}
-    end
-  end
-
-  class AdminController; end
-
-  class MockAdminController < AdminController
-    def controller_name
-      "mock_admin"
-    end
-
-    def action_name
-      "action"
-    end
-
-    def view_assigns
-      {}
-    end
-  end
-
-  class MyAdminController < AdminController
-    def controller_name
-      "my_admin"
-    end
-
-    def action_name
-      "action"
-    end
-
-    def view_assigns
-      {}
-    end
   end
 
   def titler_helper

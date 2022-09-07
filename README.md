@@ -170,7 +170,7 @@ Here are some resources to learn more about the importance of thoughtful, well-c
 
 Titler was conceived and developed by Robert Travis Pierce ([roberttravispierce](https://github.com/roberttravispierce)), to scratch his own itch and further his education in Ruby and Rails.
 
-Invaluable guidance and encouragment was provided along the way by Jonathan Allured ([jonallured](https://github.com/jonallured)). Thank you Jon, for agreeing to be a mentor and give back to the community.
+Invaluable guidance and encouragement was provided along the way by Jonathan Allured ([jonallured](https://github.com/jonallured)). Thank you Jon, for agreeing to be a mentor and give back to the community.
 
 In addition, the [title gem](https://github.com/calebthompson/title) by [calebthompson](https://github.com/calebthompson), helped greatly with figuring out how to structure the gem as a rails engine, and served as a guide for several improvements.
 
